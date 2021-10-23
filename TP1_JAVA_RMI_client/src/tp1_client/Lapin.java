@@ -8,7 +8,4 @@ public class Lapin extends Espece {
 		super(nomEspece, dureeVieMoy);
 		// TODO Auto-generated constructor stub
 	}
-	public String toString() {
-		return this.getNomEspece()+this.getDureeVieMoy();
-	}
 }

@@ -64,7 +64,6 @@ public class ClientTP {
 						System.out.println("Animal (chien) crée. \n");
 					} else if (inputEspece.equals("lapin")) {
 						Espece lapin = (Espece) new Lapin("lapin", 8);
-						System.out.println(lapin.toString());
 						stubICabinet.createAnimalE(nom, nomMaitre, race, ds, lapin);
 						System.out.println("Animal (lapin) crée. \n");
 					} else if (inputEspece.equals("autre")) {
