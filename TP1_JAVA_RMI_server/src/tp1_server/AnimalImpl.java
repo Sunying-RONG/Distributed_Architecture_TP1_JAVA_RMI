@@ -9,35 +9,52 @@ import java.util.Scanner;
 import tp1_common.Espece;
 import tp1_common.IAnimal;
 
-public class AnimalImpl extends UnicastRemoteObject implements IAnimal, Serializable {
+public class AnimalImpl extends UnicastRemoteObject implements IAnimal {
 	private String nom;
 	private String nomMaitre;
 	private String race;
 	private DossierSuivi dossierSuivi;
-	private ArrayList<Espece> especes = new ArrayList<>();
-
-	public AnimalImpl() throws RemoteException {
+	private String nomEspece;
+	private int dureeVieMoy;
+	private Espece esp;
+	
+	public AnimalImpl(String nom, String nomMaitre, String race, String ds, String nomEspece, int dureeVieMoy) throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 		this.dossierSuivi = new DossierSuivi();
-		especes.add(new Espece(1, "chien", 10));
-		especes.add(new Espece(2, "chat", 12));
-		especes.add(new Espece(3, "lapin", 8));
-		especes.add(new Espece(4, "cheval", 20));
+		this.setNom(nom);
+		this.setNomMaitre(nomMaitre);
+		this.setRace(race);
+		this.setDossierSuivi(ds);
+		this.setNomEspece(nomEspece);
+		this.setDureeVieMoy(dureeVieMoy);
+	}
+	
+	public AnimalImpl(String nom, String nomMaitre, String race, String ds, Espece esp) throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+		this.dossierSuivi = new DossierSuivi();
+		this.setNom(nom);
+		this.setNomMaitre(nomMaitre);
+		this.setRace(race);
+		this.setDossierSuivi(ds);
+		this.esp = esp;
+		this.nomEspece = this.esp.getNomEspece();
+		this.dureeVieMoy = this.esp.getDureeVieMoy();
 	}
 	
 	public String helloAnimal() throws RemoteException {
 		return "hello animal !";
 	}
 	
-	public void printAnimal() throws RemoteException {
-		System.out.println(
-				"Nom d'animal : " + this.nom + 
-				", Nom du maître : " + this.nomMaitre +
-				", Race : " + this.race +
-				", Dossier de suivi : " + this.dossierSuivi.toString()
-				);
-	}
+//	public void printAnimal() throws RemoteException {
+//		System.out.println(
+//				"Nom d'animal : " + this.nom + 
+//				", Nom du maître : " + this.nomMaitre +
+//				", Race : " + this.race +
+//				", Dossier de suivi : " + this.dossierSuivi.toString()
+//				);
+//	}
 	
 	public String getNom() throws RemoteException {
 		return this.nom;
@@ -71,18 +88,20 @@ public class AnimalImpl extends UnicastRemoteObject implements IAnimal, Serializ
 		this.dossierSuivi.setDS(ds);
 	}
 	
-	public Espece consultEspece(int espNum) throws RemoteException {
-		Espece consultEspece = null;
-		for (Espece esp : especes) {
-			if (esp.getEspeceNum() == espNum) {
-				consultEspece = esp;
-			}
-		}
-		return consultEspece;
+	public String getNomEspece() throws RemoteException {
+		return this.nomEspece;
 	}
 	
-//	public String toString() {
-//		return "test";
-//	}
+	public void setNomEspece(String nomEspece) throws RemoteException {
+		this.nomEspece = nomEspece;
+	}
+	
+	public int getDureeVieMoy() throws RemoteException {
+		return this.dureeVieMoy;
+	}
+	
+	public void setDureeVieMoy(int dureeVieMoy) throws RemoteException {
+		this.dureeVieMoy = dureeVieMoy;
+	}
 
 }

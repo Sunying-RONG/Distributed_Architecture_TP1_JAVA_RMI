@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 public interface IAnimal extends Remote {
 	String helloAnimal() throws RemoteException;
 	
-	void printAnimal() throws RemoteException;
+//	void printAnimal() throws RemoteException;
 	
 	String getNom() throws RemoteException;
 	
@@ -24,8 +24,15 @@ public interface IAnimal extends Remote {
 	
 	void setDossierSuivi(String ds) throws RemoteException;
 	
-//	void setEspece(Espece espece) throws RemoteException;
-	Espece consultEspece(int espNum) throws RemoteException;
+	String getNomEspece() throws RemoteException;
 	
-//	String toString() throws RemoteException;
+	void setNomEspece(String nomEspece) throws RemoteException;
+	
+	int getDureeVieMoy() throws RemoteException;
+	
+	void setDureeVieMoy(int dureeVieMoy) throws RemoteException;
+	
+//	void setEspece(Espece espece) throws RemoteException;
+//	Espece consultEspece(int espNum) throws RemoteException;
+	
 }

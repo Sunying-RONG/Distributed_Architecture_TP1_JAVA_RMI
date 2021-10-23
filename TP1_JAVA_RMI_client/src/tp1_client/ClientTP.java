@@ -6,87 +6,112 @@ import java.util.Scanner;
 
 import tp1_common.Espece;
 import tp1_common.IAnimal;
-import tp1_common.ICollectionAnimal;
+import tp1_common.ICabinet;
 
 public class ClientTP {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 		String host = (args.length < 1) ? null : args[0];
 		try {
 			Registry registry = LocateRegistry.getRegistry(host);
-			IAnimal stubIAnimal = (IAnimal) registry.lookup("animal");
-			ICollectionAnimal stubICollection = (ICollectionAnimal) registry.lookup("collection");
+//			IAnimal stubIAnimal = (IAnimal) registry.lookup("animal");
+			ICabinet stubICabinet = (ICabinet) registry.lookup("cabinet");
 			
-			String responseA = stubIAnimal.helloAnimal();
-			System.out.println("Response animal : " + responseA);
+//			String responseA = stubIAnimal.helloAnimal();
+//			System.out.println("Response animal : " + responseA);
 //			stubIAnimal.printAnimal();
 			
-			String responseCA = stubICollection.helloCollection();
-			System.out.println("Reponse collection : " + responseCA);
-			
+			String responseCA = stubICabinet.helloCabinet();
+			System.out.println("Reponse cabinet : " + responseCA);
 			Scanner sc = new Scanner(System.in).useDelimiter("\n");
-			// consulter collection d'animal (patients existants)
-			System.out.println("Consulter les noms de la collection d'animal (patients existants) ? (y/n)");
-			if (sc.next().charAt(0) == 'y') {
-				System.out.println("Tous les patients existants : " + stubICollection.consulterNoms());
-			}
-			
-			// créer un nouveau animal(patient), entrer les infos et l'ajouter dans la collection
-			System.out.println("Créer un nouveau patient ? (y/n)");
-			if (sc.next().charAt(0) == 'y') {
-				System.out.println("Entrer le nom d'animal : ");
-				stubIAnimal.setNom(sc.next());
-				System.out.println("Entrer le nom Maître d'animal : ");
-				stubIAnimal.setNomMaitre(sc.next());
-				System.out.println("Entrer la race d'animal : ");
-				stubIAnimal.setRace(sc.next());
-				System.out.println("Entrer le dossier suivi : ");
-				stubIAnimal.setDossierSuivi(sc.next());
-				stubICollection.ajoutAnimalImpl(stubIAnimal);
-				System.out.println("Fin de saisi, animal crée.");
-				System.out.println("Tous les patients existants : " + stubICollection.consulterNoms());
-			};
-			
-			// recherche d'animal par nom
-			System.out.println("Rechercher d'animal (ancient patient) par nom ? (y/n)");
-			if (sc.next().charAt(0) == 'y') {
-				System.out.println("Entrer le nom d'animal pour la recherche : ");
-				IAnimal rechercheAnim = stubICollection.rechercheAnimal(sc.next());
-				if (rechercheAnim != null) {
-					System.out.println(
-							"Nom d'animal : " + rechercheAnim.getNom() + 
-							", Nom du maître : " + rechercheAnim.getNomMaitre() +
-							", Race : " + rechercheAnim.getRace() +
-							", Dossier de suivi : " + rechercheAnim.getDossierSuivi());
-				} else {
-					System.out.println("Animal n'existe pas !");
+			int input = 0;
+			while (input != 5) {
+				// 1 Consulter tous les noms d'animaux.
+				if (input == 1) {
+					System.out.println("Tous les animaux (patients) existants : \n" + stubICabinet.consulterNoms());
 				}
 				
-				// consulter espèce par numéro d'espèce 1,2,3,4
-				System.out.println("Consulter l'espèce d'animal par numéro d'espèce ? (y/n)");
-				if (sc.next().charAt(0) == 'y') {
-					System.out.println("Entrer numéro d'espèce d'animal pour consulter : "
-							+ "1 : chien. 2 : chat. 3 : lapin. 4 : cheval.");
-					int espNum = sc.nextInt();
-					Espece esp = stubIAnimal.consultEspece(espNum); // esp est un objet passé de Server à client, faut sérialisé
-					System.out.println("D'après numéro d'espèce saisi : " + esp.toString());
+				// 2 Consulter tous les informations de tous les animaux.
+				if (input == 2) {
+					System.out.println("Tous les patients existants : \n" + stubICabinet.consulterTous());
 				}
 				
-				// get, modifier dossier suivi
-				System.out.println("Modifier le dossier suivi d'animal " + " ? (y/n)");
-				char mds = sc.next().charAt(0);
-				if (mds == 'y') {
-					System.out.println("L'ancien dossier suivui : " + stubIAnimal.getDossierSuivi());
-					System.out.println("Entrer le nouveau dossier de suivi : ");
+				// 3 Créer un nouveau animal (patient).
+				if (input == 3) {
+					System.out.println("Entrer le nom d'animal : ");
+					String nom = sc.next();
+					System.out.println("Entrer le nom Maître d'animal : ");
+					String nomMaitre = sc.next();
+					System.out.println("Entrer la race d'animal : ");
+					String race = sc.next();
+					System.out.println("Entrer le dossier suivi : ");
 					String ds = sc.next();
-					stubIAnimal.setDossierSuivi(ds);
-					System.out.println("Vous avez saisi nouveau dossier suivi : " + stubIAnimal.getDossierSuivi());
+					
+					System.out.println(
+							"Entrer l'espèce d'animal ('chat' ou 'chien' ou 'lapin' ou 'autre') : \n" +
+							"Si saisir 'chat' ou 'chien' ou 'lapin', PAS besoin de saisir 'nom d'espèce' ou 'durée de vie moyenne'. \n" +
+							"Si saisir 'autre', veuillez saisir 'nom d'espèce' et 'durée de vie moyenne' après.");
+					String inputEspece = sc.next();
+					if (inputEspece.equals("chat")) {
+						Espece chat = (Espece) new Chat("chat", 10);
+						stubICabinet.createAnimalE(nom, nomMaitre, race, ds, chat);
+						//!!!! verifier si nom existe
+						System.out.println("Animal (chat) crée. \n");
+					} else if (inputEspece.equals("chien")) {
+						Espece chien = (Espece) new Chien("chien", 15);
+						stubICabinet.createAnimalE(nom, nomMaitre, race, ds, chien);
+						System.out.println("Animal (chien) crée. \n");
+					} else if (inputEspece.equals("lapin")) {
+						Espece lapin = (Espece) new Lapin("lapin", 8);
+						System.out.println(lapin.toString());
+						stubICabinet.createAnimalE(nom, nomMaitre, race, ds, lapin);
+						System.out.println("Animal (lapin) crée. \n");
+					} else if (inputEspece.equals("autre")) {
+						System.out.println("Entrer l'espèce d'animal : ");
+						String nomEspece = sc.next();
+						System.out.println("Entrer la durée moyenne de cette espèce : ");
+						int dureeVieMoy = sc.nextInt();
+						stubICabinet.createAnimal(nom, nomMaitre, race, ds, nomEspece, dureeVieMoy);
+						System.out.println("Animal crée. \n");
+					} else {
+						System.out.println("Saisi non valable, animal n'est pas crée. \n");
+					}
 				}
-			}
-			
-			sc.close();
+
+				// 4 Rechercher d'animal (patient) par nom.
+				if (input == 4) {
+					System.out.println("Entrer le nom d'animal pour la recherche : ");
+					IAnimal rechercheAnim = stubICabinet.rechercheAnimal(sc.next());
+					if (rechercheAnim == null) {
+						System.out.println("Animal n'existe pas ! \n");
+					} else {
+						System.out.println(stubICabinet.infoAnimal(rechercheAnim));
+						// 4 modifier son dossier suivi
+						System.out.println("Modifier le dossier suivi de cet animal " + " ? (y/n)");
+						if (sc.next().charAt(0) == 'y') {
+							System.out.println("Entrer le nouveau dossier de suivi : ");
+							String ds = sc.next();
+							rechercheAnim.setDossierSuivi(ds);
+						}
+					}
+				}
+				// toujours afficher si input != 5
+				System.out.println(
+						"Entrer 1 ou 2 ou 3 ou 4 ou 5 pour : \n"+
+						"1 Consulter tous les noms d'animaux.\n"+
+						"2 Consulter tous les informations de tous les animaux.\n"+
+						"3 Créer un nouveau animal (patient), choisir ou décrire son espèce.\n"+
+						"4 Rechercher d'animal (patient) par nom et pour modifier son dossier suivi.\n"+
+						"5 Quitter."
+				);
+				input = sc.nextInt();
+				// 5 Quitter le programme
+				if (input ==5) {
+					System.out.println("Quitter le programme. Relancer le programme pour recommencer.");
+					sc.close();
+				}
+			} 
 		} catch (Exception e) {
 			System.err.println("Client exception: " + e.toString());
 			e.printStackTrace();

@@ -3,22 +3,22 @@ package tp1_common;
 import java.io.Serializable;
 
 public class Espece implements Serializable {
-	private int especeNum;
 	private String nomEspece;
 	private int dureeVieMoy;
 	
-	public Espece(int especeNum, String nomEspece, int dureeVieMoy) {
-		this.especeNum = especeNum;
+//	public Espece() {}
+	
+	public Espece(String nomEspece, int dureeVieMoy) {
 		this.nomEspece = nomEspece;
 		this.dureeVieMoy = dureeVieMoy;
 	}
 	
-	public int getEspeceNum() {
-		return this.especeNum;
-	}
-	
 	public String getNomEspece() {
 		return this.nomEspece;
+	}
+	
+	public int getDureeVieMoy() {
+		return this.dureeVieMoy;
 	}
 	
 	public String toString() {
