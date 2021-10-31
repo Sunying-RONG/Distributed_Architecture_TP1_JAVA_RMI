@@ -54,16 +54,16 @@ public class ClientTP {
 							"Si saisir 'autre', veuillez saisir 'nom d'espèce' et 'durée de vie moyenne' après.");
 					String inputEspece = sc.next();
 					if (inputEspece.equals("chat")) {
-						Espece chat = (Espece) new Chat("chat", 10);
+						Espece chat = new Chat("chat", 10);
 						stubICabinet.createAnimalE(nom, nomMaitre, race, ds, chat);
 						//!!!! verifier si nom existe
 						System.out.println("Animal (chat) crée. \n");
 					} else if (inputEspece.equals("chien")) {
-						Espece chien = (Espece) new Chien("chien", 15);
+						Espece chien = new Chien("chien", 15);
 						stubICabinet.createAnimalE(nom, nomMaitre, race, ds, chien);
 						System.out.println("Animal (chien) crée. \n");
 					} else if (inputEspece.equals("lapin")) {
-						Espece lapin = (Espece) new Lapin("lapin", 8);
+						Espece lapin = new Lapin("lapin", 8);
 						stubICabinet.createAnimalE(nom, nomMaitre, race, ds, lapin);
 						System.out.println("Animal (lapin) crée. \n");
 					} else if (inputEspece.equals("autre")) {
