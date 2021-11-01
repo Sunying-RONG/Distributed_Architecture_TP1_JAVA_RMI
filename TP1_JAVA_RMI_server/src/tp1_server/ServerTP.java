@@ -32,11 +32,13 @@ public class ServerTP {
 			} else {
 //				registry.bind("animal", objAnimal);
 				registry.bind("cabinet", objCabinet);
+				registry.bind("observable", new ObservableImpl());
 				System.err.println("ServerCV ready !");
 			}
 		} catch (Exception e) {
 			System.err.println("Server exception: " + e.toString());
 			e.printStackTrace();
 		}
+	
 	}
 }

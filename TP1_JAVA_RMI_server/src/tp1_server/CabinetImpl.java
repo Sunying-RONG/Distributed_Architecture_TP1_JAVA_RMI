@@ -10,7 +10,7 @@ import tp1_common.IAnimal;
 import tp1_common.ICabinet;
 
 public class CabinetImpl extends UnicastRemoteObject implements ICabinet {
-	private ArrayList<IAnimal> cabinet = new ArrayList<>();
+	public static ArrayList<IAnimal> cabinet = new ArrayList<>();
 
 	protected CabinetImpl() throws RemoteException {
 		super();
@@ -27,11 +27,13 @@ public class CabinetImpl extends UnicastRemoteObject implements ICabinet {
 	public void createAnimal(String nom, String nomMaitre, String race, String ds, String nomEspece, int dureeVieMoy) throws RemoteException {
 		IAnimal animal = new AnimalImpl(nom, nomMaitre, race, ds, nomEspece, dureeVieMoy);
 		cabinet.add(animal);
+        ObserverUpdater.update(CabinetImpl.cabinet.size());
 	}
 	
 	public void createAnimalE(String nom, String nomMaitre, String race, String ds, Espece esp) throws RemoteException {
 		IAnimal animal = new AnimalImpl(nom, nomMaitre, race, ds, esp);
 		cabinet.add(animal);
+        ObserverUpdater.update(CabinetImpl.cabinet.size());
 	}
 
 	public IAnimal rechercheAnimal(String rechercheNom) throws RemoteException {

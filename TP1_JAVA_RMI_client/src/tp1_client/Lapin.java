@@ -8,4 +8,5 @@ public class Lapin extends Espece {
 		super(nomEspece, dureeVieMoy);
 		// TODO Auto-generated constructor stub
 	}
+
 }

@@ -7,6 +7,7 @@ import java.util.Scanner;
 import tp1_common.Espece;
 import tp1_common.IAnimal;
 import tp1_common.ICabinet;
+import tp1_common.IObservable;
 
 public class ClientTP {
 
@@ -17,13 +18,15 @@ public class ClientTP {
 			Registry registry = LocateRegistry.getRegistry(host);
 //			IAnimal stubIAnimal = (IAnimal) registry.lookup("animal");
 			ICabinet stubICabinet = (ICabinet) registry.lookup("cabinet");
-			
 //			String responseA = stubIAnimal.helloAnimal();
 //			System.out.println("Response animal : " + responseA);
 //			stubIAnimal.printAnimal();
-			
 			String responseCA = stubICabinet.helloCabinet();
 			System.out.println("Reponse cabinet : " + responseCA);
+			
+			IObservable stubIObservable = (IObservable) registry.lookup("observable");
+			stubIObservable.addObserver(new ObserverImpl());
+			
 			Scanner sc = new Scanner(System.in).useDelimiter("\n");
 			int input = 0;
 			while (input != 5) {
