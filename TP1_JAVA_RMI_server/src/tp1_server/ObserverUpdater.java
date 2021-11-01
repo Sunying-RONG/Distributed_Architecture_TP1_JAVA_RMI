@@ -11,10 +11,8 @@ public class ObserverUpdater {
 		observerList.add(observer);
 	}
 	
-	public static synchronized void update(Object o) {
-		if (CabinetImpl.cabinet.size() == 2 || CabinetImpl.cabinet.size() == 4) {
+	public static synchronized void numberChanged(Object o) {
 			for (IObserver observer : observerList) {
-				System.out.println("test");
 				try {
 					observer.update(o);
 				} catch (Exception e) {
@@ -22,6 +20,6 @@ public class ObserverUpdater {
 	                observerList.remove(observer);
 	            }
 			}
-		}
+		
 	}
 }

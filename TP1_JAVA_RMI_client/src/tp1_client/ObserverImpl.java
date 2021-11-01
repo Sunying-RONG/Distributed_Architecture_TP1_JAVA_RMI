@@ -17,7 +17,7 @@ public class ObserverImpl extends UnicastRemoteObject implements IObserver {
 	@Override
 	public void update(Object o) throws RemoteException {
 		// TODO Auto-generated method stub
-        System.out.println("update received from server " + o);
+        System.out.println("\nFranchir le seuil de " + o + " patients!\n");
 	}
 
 }
