@@ -10,9 +10,9 @@ Si Download ZIP, unzip le dossier, le nom de dossier peut être "TP1_JAVA_RMI-wo
 3. Lancer Eclipse, choisir le dossier "TP1_JAVA_RMI-workspace" comme le Workspace.  
 4. Cliquer sur "import projects" dans Package Explorer. Puis choisir "General" -> "Existing Projects into Workspace" -> "Next>" -> Select root directory cliquer sur "Browse" -> choisir "TP1_JAVA_RMI-workspace" et cliquer sur "Ouvrir" -> les trois projets "TP1_JAVA_RMI_client", "TP1_JAVA_RMI_common", "TP1_JAVA_RMI_server" doivent être tout cochés -> "Finish". Vous devez voir trois projets dans Package Explorer.
 5. Lancer ServerTP.java, qui est dans le projet "TP1_JAVA_RMI_server" -> src -> tp1_server.  
-"ServerCV ready !" doit être affiché et le chemain de codebase path est généré par le code.
+"ServerCV ready !" doit être affiché et le chemin de codebase path est généré par le code.
 6. Lancer ClientTP.java qui est dans le projet "TP1_JAVA_RMI_client" -> src -> tp1_client.  
-À vous de jouer selon les instruction dans le Console.
+À vous de jouer selon les instructions dans le Console.
 
 
 
