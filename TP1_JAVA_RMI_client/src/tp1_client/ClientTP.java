@@ -33,7 +33,30 @@ public class ClientTP {
 
 			Scanner sc = new Scanner(System.in).useDelimiter("\n");
 			int input = -1;
-			while (input != 0) {
+			do {
+				// toujours afficher si input != 0
+				System.out.println(
+						"Entrer 1 ou 2 ou 3 ou 4 ou 5 ou 6 ou 7 ou 8 ou 9 ou 0 pour : \n"+
+						"1 Consulter tous les noms d'animaux.\n"+
+						"2 Consulter tous les informations de tous les animaux.\n"+
+						"3 Créer un nouveau animal (patient), choisir ou décrire son espèce.\n"+
+						"4 Rechercher d'animal (patient) par nom et pour modifier son dossier suivi ou pour le supprimer.\n"+
+						"5 Simuler l'augmentation de nombre de patients jusqu'à 100.\n"+
+						"6 Simuler l'augmentation de nombre de patients jusqu'à 500.\n"+
+						"7 Simuler l'augmentation de nombre de patients jusqu'à 1000.\n"+
+						"8 Supprimer tous les patients.\n"+
+						"9 Acquérir le nombre d'animaux dans le cabinet.\n"+
+						"0 Quitter."
+				);
+				
+				try {
+					input = sc.nextInt();
+				} catch (Exception e) {
+					System.out.println("Saisie non valide ! Relancer le programme pour recommencer.");
+					e.printStackTrace();
+					break;
+				}
+				
 				// 1 Consulter tous les noms d'animaux.
 				if (input == 1) {
 					System.out.println("Tous les animaux (patients) existants : \n" + stubICabinet.consulterNoms());
@@ -81,7 +104,7 @@ public class ClientTP {
 							System.out.println("Saisi non valable, animal n'est pas crée. \n");
 						}
 					} else {
-						System.out.println("Nom d'animal déjà existe.\n");
+						System.out.println("Nom d'animal déjà existe, ne peut pas être crée.\n");
 					}
 				}
 
@@ -104,7 +127,7 @@ public class ClientTP {
 						System.out.println("Supprimer cet animal ? (y/n)");
 						if (sc.next().charAt(0) == 'y') {
 							stubICabinet.removeAnimal(nom);
-							System.out.println("Animal supprimé.");
+							System.out.println("Animal supprimé.\n");
 						}
 					}
 				}
@@ -149,27 +172,12 @@ public class ClientTP {
 					System.out.println("Il y a "+stubICabinet.cabinetSize()+" patients dans le cabinet.\n");
 				}
 			
-				// toujours afficher si input != 0
-				System.out.println(
-						"Entrer 1 ou 2 ou 3 ou 4 ou 5 pour : \n"+
-						"1 Consulter tous les noms d'animaux.\n"+
-						"2 Consulter tous les informations de tous les animaux.\n"+
-						"3 Créer un nouveau animal (patient), choisir ou décrire son espèce.\n"+
-						"4 Rechercher d'animal (patient) par nom et pour modifier son dossier suivi ou pour le supprimer.\n"+
-						"5 Simuler l'augmentation de nombre de patients jusqu'à 100.\n"+
-						"6 Simuler l'augmentation de nombre de patients jusqu'à 500.\n"+
-						"7 Simuler l'augmentation de nombre de patients jusqu'à 1000.\n"+
-						"8 Supprimer tous les patients.\n"+
-						"9 Acquérir le nombre d'animaux dans le cabinet.\n"+
-						"0 Quitter."
-				);
-				input = sc.nextInt();
 				// 0 Quitter le programme
 				if (input == 0) {
 					System.out.println("Quitter le programme. Relancer le programme pour recommencer.");
 					sc.close();
 				}
-			} 
+			} while (input != 0);
 		} catch (Exception e) {
 			System.err.println("Client exception: " + e.toString());
 			e.printStackTrace();
