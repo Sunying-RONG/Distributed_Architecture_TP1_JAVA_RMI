@@ -26,13 +26,14 @@ public class ServerTP {
 		try {
 //			AnimalImpl objAnimal = new AnimalImpl();
 			CabinetImpl objCabinet = new CabinetImpl();
+			ObservableImpl objObservable = new ObservableImpl();
 			Registry registry = LocateRegistry.createRegistry(1099);
 			if (registry == null) {
 				System.err.println("RMIRegistry not found !");
 			} else {
 //				registry.bind("animal", objAnimal);
 				registry.bind("cabinet", objCabinet);
-				registry.bind("observable", new ObservableImpl());
+				registry.bind("observable", objObservable);
 				System.err.println("ServerCV ready !");
 			}
 		} catch (Exception e) {

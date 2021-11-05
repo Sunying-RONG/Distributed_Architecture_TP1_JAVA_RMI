@@ -43,6 +43,7 @@ public class AnimalImpl extends UnicastRemoteObject implements IAnimal {
 		this.dureeVieMoy = this.esp.getDureeVieMoy();
 	}
 	
+	@Override
 	public String helloAnimal() throws RemoteException {
 		return "hello animal !";
 	}
@@ -56,50 +57,62 @@ public class AnimalImpl extends UnicastRemoteObject implements IAnimal {
 //				);
 //	}
 	
+	@Override
 	public String getNom() throws RemoteException {
 		return this.nom;
 	}
 	
+	@Override
 	public void setNom(String nom) throws RemoteException {
 		this.nom = nom;
 	}
 	
+	@Override
 	public String getNomMaitre() throws RemoteException {
 		return this.nomMaitre;
 	}
 	
+	@Override
 	public void setNomMaitre(String nomMaitre) throws RemoteException {
 		this.nomMaitre = nomMaitre;
 	}
 	
+	@Override
 	public String getRace() {
 		return this.race;
 	}
 	
+	@Override
 	public void setRace(String race) throws RemoteException {
 		this.race = race;
 	}
 	
+	@Override
 	public String getDossierSuivi() throws RemoteException {
 		return this.dossierSuivi.getDS();
 	}
 	
+	@Override
 	public void setDossierSuivi(String ds) throws RemoteException {
 		this.dossierSuivi.setDS(ds);
 	}
 	
+	@Override	
 	public String getNomEspece() throws RemoteException {
 		return this.nomEspece;
 	}
 	
+	@Override
 	public void setNomEspece(String nomEspece) throws RemoteException {
 		this.nomEspece = nomEspece;
 	}
 	
+	@Override
 	public int getDureeVieMoy() throws RemoteException {
 		return this.dureeVieMoy;
 	}
 	
+	@Override
 	public void setDureeVieMoy(int dureeVieMoy) throws RemoteException {
 		this.dureeVieMoy = dureeVieMoy;
 	}

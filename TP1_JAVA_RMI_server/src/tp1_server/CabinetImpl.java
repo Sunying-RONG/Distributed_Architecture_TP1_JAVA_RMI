@@ -20,14 +20,17 @@ public class CabinetImpl extends UnicastRemoteObject implements ICabinet {
 		this.cabinet.add(defaultAnimal);
 	}
 	
+	@Override
 	public String helloCabinet() throws RemoteException {
 		return "hello cabinet d'animal !";
 	}
 	
+	@Override
 	public int cabinetSize() throws RemoteException {
 		return this.cabinet.size();
 	}
 	
+	@Override
 	public void createAnimal(String nom, String nomMaitre, String race, String ds, String nomEspece, int dureeVieMoy) throws RemoteException {
 		IAnimal animal = new AnimalImpl(nom, nomMaitre, race, ds, nomEspece, dureeVieMoy);
 		this.cabinet.add(animal);
@@ -36,6 +39,7 @@ public class CabinetImpl extends UnicastRemoteObject implements ICabinet {
 		}
 	}
 	
+	@Override
 	public void createAnimalE(String nom, String nomMaitre, String race, String ds, Espece esp) throws RemoteException {
 		IAnimal animal = new AnimalImpl(nom, nomMaitre, race, ds, esp);
 		this.cabinet.add(animal);
@@ -44,6 +48,7 @@ public class CabinetImpl extends UnicastRemoteObject implements ICabinet {
 		}
 	}
 	
+	@Override
 	public void removeAnimal(String nom) throws RemoteException {
 		for (int i=0; i<this.cabinetSize(); i++) {
 			if (this.cabinet.get(i).getNom().equals(nom)) {
@@ -55,10 +60,12 @@ public class CabinetImpl extends UnicastRemoteObject implements ICabinet {
 		}
 	}
 	
+	@Override
 	public void removeAll() throws RemoteException {
 		this.cabinet.removeAll(this.cabinet);
 	}
 
+	@Override
 	public IAnimal rechercheAnimal(String rechercheNom) throws RemoteException {
 		IAnimal rechercheAnim = null;
 		for (IAnimal animal : this.cabinet) {
@@ -69,6 +76,7 @@ public class CabinetImpl extends UnicastRemoteObject implements ICabinet {
 		return rechercheAnim;
 	}
 	
+	@Override
 	public String infoAnimal(IAnimal animal) throws RemoteException {
 		return "Nom d'animal : " + animal.getNom() + 
 				", Nom du maître : " + animal.getNomMaitre() +
@@ -78,6 +86,7 @@ public class CabinetImpl extends UnicastRemoteObject implements ICabinet {
 				", Durée de la vie : " + animal.getDureeVieMoy();
 	}
 	
+	@Override
 	public String consulterTous() throws RemoteException {
 		String tousInfo = "";
 		for (IAnimal animal : this.cabinet) {
@@ -85,7 +94,8 @@ public class CabinetImpl extends UnicastRemoteObject implements ICabinet {
 		}
 		return tousInfo;
 	}
-
+	
+	@Override
 	public String consulterNoms() throws RemoteException {
 		String nomCabinet = "";
 		for (IAnimal animal : this.cabinet) {
