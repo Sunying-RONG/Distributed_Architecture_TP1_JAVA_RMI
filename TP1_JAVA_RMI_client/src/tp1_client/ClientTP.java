@@ -27,9 +27,9 @@ public class ClientTP {
 			IObservable stubIObservable = (IObservable) registry.lookup("observable");
 			stubIObservable.addObserver(new ObserverImpl());
 			
-			Espece chat = new Chat("chat", 10);
-			Espece chien = new Chien("chien", 15);
-			Espece lapin = new Lapin("lapin", 8);
+			Espece chat = new Chat();
+			Espece chien = new Chien();
+			Espece lapin = new Lapin();
 
 			Scanner sc = new Scanner(System.in).useDelimiter("\n");
 			int input = -1;
