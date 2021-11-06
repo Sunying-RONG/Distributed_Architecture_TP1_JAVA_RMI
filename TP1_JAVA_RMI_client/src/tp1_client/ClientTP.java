@@ -165,6 +165,7 @@ public class ClientTP {
 				// 8 Supprimer tous les patients.
 				if (input == 8) {
 					stubICabinet.removeAll();
+					System.out.println("Tous les animaux sont supprimés !\n");
 				}
 				
 				// 9 Acquérir le nombre d'animaux dans le cabinet.

@@ -13,7 +13,9 @@ public class ServerTP {
 		Path currentPath = Paths.get(cp);
 		Path parentPath = currentPath.getParent();
 		String CODEBASE_PATH = "file://"+parentPath.toString()+"/TP1_JAVA_RMI_client/codebaseSharedClasses/";
-		System.out.println("codebase path is : \n"+CODEBASE_PATH+"\nPlease verify your local path of 'codebaseSharedClasses' folder. Should be the same as above.");
+		System.out.println("codebase path is : "+CODEBASE_PATH+"\n"
+				+ "(Please verify your local path of 'codebaseSharedClasses' folder. Should be the same as above.\n"
+				+ "Otherwise, change CODEBASE_PATH to your local path of 'codebaseSharedClasses' folder.)");
 		
 		System.setProperty("java.security.policy", "server.policy/");
 		if (System.getSecurityManager() == null) {

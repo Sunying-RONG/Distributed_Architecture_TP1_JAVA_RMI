@@ -16,7 +16,7 @@ public class ObserverUpdater {
 				try {
 					observer.update(o);
 				} catch (Exception e) {
-	                System.err.println("observer disconnected, unsubscribing... Ressayer les simulations dans Console de Client.");
+	                System.err.println("observer disconnected, unsubscribing... Veulliez ressayer les simulations dans Console de Client.");
 	                observerList.remove(observer);
 	            }
 			}
