@@ -2,7 +2,7 @@
 cours HAI704I Architectures logicielles distribuées - une pratique de Java RMI
 
 La conception de la solution: 
-![alt text]()
+![alt text](https://github.com/Sunying-RONG/Distributed_Architecture_TP1_JAVA_RMI-workspace/blob/main/conception.jpg)
 
 ### Un peu d'explication :
 1. Stub, squelette, registry (flèches rouges dans le diagramme)  
