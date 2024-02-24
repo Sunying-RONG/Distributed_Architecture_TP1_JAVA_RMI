@@ -36,12 +36,11 @@ Il y a deux façons de créer un animal avec l'espèce sur côté Client.
 Alors, squelette de côté client reçoit des invocations de méthode update et invoque cette méthodes sur l'implémentation de l'objet distant : ObserverImpl, qui est juste afficher une phrase avec le nombre sur le console de client.
 
 ### Pour lancer/exécuter le projet:
-1. Ouvrir le lien https://github.com/Sunying-RONG/TP1_JAVA_RMI-workspace dans navigateur. 
-2. Télécharger le code sur local par git clone ou Download ZIP.  
+1. Télécharger le code sur local par git clone ou Download ZIP.  
    - Le nom du dossier est "TP1_JAVA_RMI-workspace". 
    - Si par Download ZIP, unzip le dossier, le nom de dossier peut être "TP1_JAVA_RMI-workspace-main", dans ce cas, tous les "TP1_JAVA_RMI-workspace" doivent être "TP1_JAVA_RMI-workspace-main" dans les étapes suivantes.
-3. Lancer Eclipse, choisir le dossier "TP1_JAVA_RMI-workspace" comme le Workspace.
-4. Importer les projets.
+2. Lancer Eclipse, choisir le dossier "TP1_JAVA_RMI-workspace" comme le Workspace.
+3. Importer les projets.
    - Cliquer sur "import projects" dans Package Explorer. 
    - Puis choisir "General" -> 
    - "Existing Projects into Workspace" ->
@@ -51,9 +50,9 @@ Alors, squelette de côté client reçoit des invocations de méthode update et 
    - Les trois projets "TP1_JAVA_RMI_client", "TP1_JAVA_RMI_common", "TP1_JAVA_RMI_server" doivent être tous cochés -> 
    - "Finish". 
    - Vous devez voir trois projets dans Package Explorer.
-5. Lancer ServerTP.java, qui est dans le projet "TP1_JAVA_RMI_server" -> src -> tp1_server.
+4. Lancer ServerTP.java, qui est dans le projet "TP1_JAVA_RMI_server" -> src -> tp1_server.
    - "ServerCV ready !" doit être affiché et le chemin de codebase path est généré par le code.
-6. Lancer ClientTP.java qui est dans le projet "TP1_JAVA_RMI_client" -> src -> tp1_client.
+5. Lancer ClientTP.java qui est dans le projet "TP1_JAVA_RMI_client" -> src -> tp1_client.
    - À vous de jouer selon les instructions dans le Console.
 
 
